@@ -18,7 +18,6 @@ class HomeFragment : Fragment(),View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -34,6 +33,10 @@ class HomeFragment : Fragment(),View.OnClickListener {
         setClicksEvents()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     override fun onClick(v: View?) {
         val id = v?.id

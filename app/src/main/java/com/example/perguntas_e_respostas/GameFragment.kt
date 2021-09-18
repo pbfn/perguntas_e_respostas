@@ -44,33 +44,76 @@ class GameFragment : Fragment(),View.OnClickListener {
 
     override fun onClick(v: View?) {
 
+
         when(v?.id){
-            R.id.button_teste ->{
-                if(qtd_perguntas!! < 10){
-                    //verificar se acertou e passar no total de acertos +1
-                        qtd_perguntas = qtd_perguntas!! +1
-                    val direction = GameFragmentDirections.actionGameFragmentSelf(qtd_perguntas!!,0)
-                    findNavController().navigate(direction)
+
+            //marcar a alteranativa em azul
+            R.id.radio_button_resp_1 ->{
+                binding.buttonResp.isEnabled = true
+            }
+            R.id.radio_button_resp_2 ->{
+                binding.buttonResp.isEnabled = true
+            }
+            R.id.radio_button_resp_3 ->{
+                binding.buttonResp.isEnabled = true
+            }
+            R.id.radio_button_resp_4 ->{
+                binding.buttonResp.isEnabled = true
+            }
+
+            R.id.button_resp ->{
+                if(binding.buttonResp.text.equals("Responder")){
+                    binding.buttonResp.text = "Próxima pergunta"
+                    //TODO VERIFICAR SE É A CERTA
+                    desativeRadio()
+
 
                 }else{
-                    val direction = GameFragmentDirections.actionGameFragmentToResultFragment(0)
-                    findNavController().navigate(direction)
+                    nextFragment()
                 }
-
-
             }
+
         }
     }
 
+    //Eventos de Click
     private fun setClicksEvents(){
-        binding.buttonTeste?.setOnClickListener(this)
+        binding.buttonResp?.setOnClickListener(this)
+        binding.radioButtonResp1?.setOnClickListener(this)
+        binding.radioButtonResp2?.setOnClickListener(this)
+        binding.radioButtonResp3?.setOnClickListener(this)
+        binding.radioButtonResp4?.setOnClickListener(this)
     }
 
+    //Desativando os radio buttons para evitar de alterar a resposta após responder
+    private fun desativeRadio(){
+        binding.radioButtonResp1.isEnabled = false
+        binding.radioButtonResp2.isEnabled = false
+        binding.radioButtonResp3.isEnabled = false
+        binding.radioButtonResp4.isEnabled = false
+    }
 
+    //Varificando para qual fragment deve ir
+    private fun nextFragment(){
+        if(qtd_perguntas!! < 10){
+            //verificar se acertou e passar no total de acertos +1
+            qtd_perguntas = qtd_perguntas!! +1
+            val direction = GameFragmentDirections.actionGameFragmentSelf(qtd_perguntas!!,0)
+            findNavController().navigate(direction)
+
+        }else{
+            val direction = GameFragmentDirections.actionGameFragmentToResultFragment(0)
+            findNavController().navigate(direction)
+        }
+    }
+
+    //Pegando argumentos da tela anterior
     private fun getArgs(){
         val args : GameFragmentArgs by navArgs()
         qtd_perguntas = args.quantidadePerguntas
         binding.textViewPergunta?.text = "Pergunta nº" + qtd_perguntas.toString()
     }
+
+
 
 }
