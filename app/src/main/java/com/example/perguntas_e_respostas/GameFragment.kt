@@ -9,33 +9,40 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.perguntas_e_respostas.databinding.FragmentGameBinding
 
 
 class GameFragment : Fragment(),View.OnClickListener {
 
-    private var text_view_teste: TextView? = null
-    private var button_teste: Button? = null
+    private  var _binding: FragmentGameBinding?= null
+    private val binding get() = _binding!!
     private var qtd_perguntas: Int? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game, container, false)
+        _binding = FragmentGameBinding.inflate(inflater,container,false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initComponents(view)
         setClicksEvents()
         getArgs()
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onClick(v: View?) {
@@ -60,18 +67,14 @@ class GameFragment : Fragment(),View.OnClickListener {
     }
 
     private fun setClicksEvents(){
-        button_teste?.setOnClickListener(this)
+        binding.buttonTeste?.setOnClickListener(this)
     }
 
-    private fun initComponents(view:View){
-        text_view_teste=view.findViewById(R.id.text_view_teste)
-        button_teste = view.findViewById(R.id.button_teste)
-    }
 
     private fun getArgs(){
         val args : GameFragmentArgs by navArgs()
         qtd_perguntas = args.quantidadePerguntas
-        text_view_teste?.text = qtd_perguntas.toString()
+        binding.textViewPergunta?.text = "Pergunta nº" + qtd_perguntas.toString()
     }
 
 

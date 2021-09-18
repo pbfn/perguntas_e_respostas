@@ -9,21 +9,68 @@
     tools:context=".GameFragment">
 
     <TextView
-        android:id="@+id/text_view_teste"
+        android:id="@+id/text_view_pergunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/text_view_respostas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Respostas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_pergunta" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_respostas"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_respostas">
+
+        <RadioButton
+            android:id="@+id/radio_button_resp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alternativa 1"
+            />
+        <RadioButton
+            android:id="@+id/radio_button_resp_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alternativa 2"
+            />
+        <RadioButton
+            android:id="@+id/radio_button_resp_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alternativa 3"
+            />
+        <RadioButton
+            android:id="@+id/radio_button_resp_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alternativa 4"
+            />
+
+    </RadioGroup>
+
     <Button
         android:id="@+id/button_teste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Próximo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_teste" />
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_respostas"
+        tools:layout_editor_absoluteX="30dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
