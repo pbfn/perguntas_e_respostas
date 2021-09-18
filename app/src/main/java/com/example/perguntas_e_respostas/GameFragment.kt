@@ -34,6 +34,7 @@ class GameFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         generateQuestions()
+        setAlteratives()
         setClicksEvents()
         getArgs()
     }
@@ -96,11 +97,12 @@ class GameFragment : Fragment(), View.OnClickListener {
     //Varificando para qual fragment deve ir
     private fun nextFragment() {
         if (qtd_perguntas!! < 10) {
-            if(resp == true){
+            if (resp == true) {
                 qtd_acertos = qtd_acertos!! + 1
             }
             qtd_perguntas = qtd_perguntas!! + 1
-            val direction = GameFragmentDirections.actionGameFragmentSelf(qtd_perguntas!!, qtd_acertos!!)
+            val direction =
+                GameFragmentDirections.actionGameFragmentSelf(qtd_perguntas!!, qtd_acertos!!)
             findNavController().navigate(direction)
 
         } else {
@@ -113,17 +115,48 @@ class GameFragment : Fragment(), View.OnClickListener {
     private fun getArgs() {
         val args: GameFragmentArgs by navArgs()
         qtd_perguntas = args.quantidadePerguntas
-        binding.textViewPergunta?.text = "Pergunta nº" + qtd_perguntas.toString() +": qual a soma de "+questions[0].toString() + "  " +questions[1].toString()
+        binding.textViewPergunta?.text =
+            "Pergunta nº" + qtd_perguntas.toString() + ": qual a soma de " + questions[0].toString() + "  " + questions[1].toString()
     }
 
-
-    private fun generateQuestions(){
-        questions[0] = (1..400).random()
-        questions[1] = (1..400).random()
-        questions[2] = (1..400).random()
-        questions[3] = (1..400).random()
-        questions[4] = (1..400).random()
+    //Gerando a pergunta e as alternativas de forma automática
+    private fun generateQuestions() {
+        questions[0] = (1..10).random()
+        questions[1] = (1..10).random()
+        questions[2] = (1..10).random()
+        questions[3] = (1..10).random()
+        questions[4] = (1..10).random()
         questions[5] = questions[0] + questions[1]
     }
 
+    //Definindo qual radio ira conter a alternativa correta
+    private fun setAlteratives() {
+        val respost = (1..4).random()
+        when (respost) {
+            1 -> {
+                binding.radioButtonResp1.text = questions[5].toString()
+                binding.radioButtonResp2.text = questions[2].toString()
+                binding.radioButtonResp3.text = questions[3].toString()
+                binding.radioButtonResp4.text = questions[4].toString()
+            }
+            2 -> {
+                binding.radioButtonResp2.text = questions[5].toString()
+                binding.radioButtonResp1.text = questions[2].toString()
+                binding.radioButtonResp3.text = questions[3].toString()
+                binding.radioButtonResp4.text = questions[4].toString()
+            }
+            3 -> {
+                binding.radioButtonResp3.text = questions[5].toString()
+                binding.radioButtonResp1.text = questions[2].toString()
+                binding.radioButtonResp2.text = questions[3].toString()
+                binding.radioButtonResp4.text = questions[4].toString()
+            }
+            4 -> {
+                binding.radioButtonResp4.text = questions[5].toString()
+                binding.radioButtonResp1.text = questions[2].toString()
+                binding.radioButtonResp2.text = questions[3].toString()
+                binding.radioButtonResp3.text = questions[4].toString()
+            }
+        }
+    }
 }
