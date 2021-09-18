@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import com.example.perguntas_e_respostas.databinding.FragmentGameBinding
+import com.example.perguntas_e_respostas.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment(),View.OnClickListener {
 
-    private var button_start: Button? = null
+    private  var _binding: FragmentHomeBinding?= null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +25,12 @@ class HomeFragment : Fragment(),View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initComponents(view)
         setClicksEvents()
     }
 
@@ -45,10 +47,7 @@ class HomeFragment : Fragment(),View.OnClickListener {
     }
 
     private fun setClicksEvents(){
-        button_start?.setOnClickListener(this)
+        binding.buttonStart?.setOnClickListener(this)
     }
 
-    private fun initComponents(view:View){
-        button_start = view.findViewById(R.id.button_start)
-    }
 }

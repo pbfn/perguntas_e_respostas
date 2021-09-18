@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.perguntas_e_respostas.databinding.FragmentGameBinding
@@ -28,9 +26,8 @@ class GameFragment : Fragment(),View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGameBinding.inflate(inflater,container,false)
-        val view = binding.root
-        return view
+        _binding = FragmentGameBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,9 +43,8 @@ class GameFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val id = v?.id
 
-        when(id){
+        when(v?.id){
             R.id.button_teste ->{
                 if(qtd_perguntas!! < 10){
                     //verificar se acertou e passar no total de acertos +1
@@ -76,8 +72,5 @@ class GameFragment : Fragment(),View.OnClickListener {
         qtd_perguntas = args.quantidadePerguntas
         binding.textViewPergunta?.text = "Pergunta nº" + qtd_perguntas.toString()
     }
-
-
-
 
 }
