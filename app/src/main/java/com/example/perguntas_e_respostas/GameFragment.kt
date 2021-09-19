@@ -67,7 +67,7 @@ class GameFragment : Fragment(), View.OnClickListener {
                     binding.buttonResp.text = "Próxima pergunta"
                     //TODO Verificar se é a resposta correta e alterar a variável resp para true
                     desativeRadio()
-
+                    vefifyAlternative()
 
                 } else {
                     nextFragment()
@@ -159,4 +159,10 @@ class GameFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
+    //Verifica se o usuário acertou
+    private fun vefifyAlternative(){
+
+    }
+
 }
