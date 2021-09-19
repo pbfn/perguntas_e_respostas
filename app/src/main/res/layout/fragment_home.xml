@@ -9,8 +9,12 @@
     tools:context=".HomeFragment">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="329dp"
+        android:layout_height="194dp"
+        android:layout_marginTop="163dp"
+        android:layout_marginBottom="245dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginLeft="23dp"
         android:background="@drawable/card_home"
         android:gravity="center"
         android:orientation="vertical"
@@ -24,7 +28,7 @@
             style="@style/text_view_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title"/>
+            android:text="@string/title" />
 
         <TextView
             style="@style/text_view_subtitle"
@@ -35,11 +39,9 @@
 
         <Button
             android:id="@+id/button_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/buttons"
             android:layout_marginTop="15dp"
-            android:text="Start!"
-            style="@style/buttons"/>
+            android:text="Start!" />
 
     </LinearLayout>
 

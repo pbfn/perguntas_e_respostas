@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
+    android:padding="24dp"
     tools:context=".GameFragment">
 
     <TextView
         android:id="@+id/text_view_pergunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/lato_regular"
+        android:text="Pergunta"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,56 +24,52 @@
         android:id="@+id/text_view_respostas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_regular"
         android:text="Respostas"
+        android:textColor="@color/azul_tema"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@+id/text_view_pergunta" />
 
     <RadioGroup
         android:id="@+id/radio_group_respostas"
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_respostas">
 
         <RadioButton
             android:id="@+id/radio_button_resp_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Alternativa 1"
-            />
+            style="@style/card_options"
+            android:text="Alternativa 1" />
+
         <RadioButton
             android:id="@+id/radio_button_resp_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Alternativa 2"
-            />
+            style="@style/card_options"
+            android:text="Alternativa 2" />
+
         <RadioButton
             android:id="@+id/radio_button_resp_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Alternativa 3"
-            />
+            style="@style/card_options"
+            android:text="Alternativa 3" />
+
         <RadioButton
             android:id="@+id/radio_button_resp_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Alternativa 4"
-            />
-
+            style="@style/card_options"
+            android:text="Alternativa 4" />
     </RadioGroup>
 
     <Button
         android:id="@+id/button_resp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Responder"
         style="@style/buttons"
+        android:layout_marginBottom="19dp"
+        android:text="Responder"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_group_respostas"
-        tools:layout_editor_absoluteX="30dp" />
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
