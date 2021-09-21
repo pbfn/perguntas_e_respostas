@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
+import com.example.perguntas_e_respostas.databinding.FragmentResultBinding
 
 class ResultFragment : Fragment() {
 
+    private var _binding: FragmentResultBinding? = null
+    private val binding get() = _binding!!
+    private var qtd_acertos: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +23,28 @@ class ResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_result, container, false)
+        _binding = FragmentResultBinding.inflate(inflater,container,false)
+        return binding.root
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getArgs()
+        setComponents()
+    }
+
+    private fun getArgs(){
+        val args: ResultFragmentArgs by navArgs()
+        qtd_acertos = args.totalAcertos
+    }
+
+    private fun setComponents(){
+        binding.textViewAcertos.text = qtd_acertos.toString()
+    }
+
+
+
+
 
 }

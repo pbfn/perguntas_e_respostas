@@ -17,10 +17,10 @@ class GameFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentGameBinding? = null
     private val binding get() = _binding!!
     private var qtd_perguntas: Int? = null
-    private var qtd_acertos: Int = 0
+    private var qtd_acertos: Int?= null
     private var correctResp: Int? = null
-    private  var idCorrectResp: Int = 0
-    private val resp: Boolean? = null
+    private var idCorrectResp: Int = 0
+    private var resp: Boolean? = null
     private var questions = IntArray(6)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +70,6 @@ class GameFragment : Fragment(), View.OnClickListener {
                     //TODO Verificar se é a resposta correta e alterar a variável resp para true
                     desativeRadio()
                     vefifyAlternative()
-
                 } else {
                     nextFragment()
                 }
@@ -99,9 +98,6 @@ class GameFragment : Fragment(), View.OnClickListener {
     //Varificando para qual fragment deve ir
     private fun nextFragment() {
         if (qtd_perguntas!! < 10) {
-            if (resp == true) {
-                qtd_acertos = qtd_acertos!! + 1
-            }
             qtd_perguntas = qtd_perguntas!! + 1
             val direction =
                 GameFragmentDirections.actionGameFragmentSelf(qtd_perguntas!!, qtd_acertos!!)
@@ -117,6 +113,8 @@ class GameFragment : Fragment(), View.OnClickListener {
     private fun getArgs() {
         val args: GameFragmentArgs by navArgs()
         qtd_perguntas = args.quantidadePerguntas
+        qtd_acertos = args.totalAcertos
+
         binding.textViewPergunta?.text =
             "Pergunta nº" + qtd_perguntas.toString() + ": qual a soma de " + questions[0].toString() + "  " + questions[1].toString()
     }
@@ -170,17 +168,21 @@ class GameFragment : Fragment(), View.OnClickListener {
     private fun vefifyAlternative() {
          var radio_button_selected: RadioButton? = null
          var radio_button_correct: RadioButton? = null
-
-
         radio_button_selected = view?.findViewById(binding.radioGroupRespostas.checkedRadioButtonId)
         radio_button_correct = view?.findViewById(idCorrectResp)
 
 
         if(binding.radioGroupRespostas.checkedRadioButtonId == idCorrectResp){
-            qtd_acertos = qtd_acertos + 1
+            resp = true
+            if(qtd_acertos == null){
+                qtd_acertos = 1
+            }else{
+                qtd_acertos = qtd_acertos!! +1
+            }
             radio_button_selected?.setBackgroundResource(R.drawable.card_options_correct)
             radio_button_selected?.setTextColor(ContextCompat.getColor(context!!,R.color.verde_text_correct))
         }else{
+            resp = false
             radio_button_selected?.setBackgroundResource(R.drawable.card_options_error)
             radio_button_selected?.setTextColor(ContextCompat.getColor(context!!,R.color.vermelho_text_error))
             radio_button_correct?.setBackgroundResource(R.drawable.card_options_correct)
