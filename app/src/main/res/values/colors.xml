@@ -12,4 +12,8 @@
     <color name="azul_claro">#E5E9FF</color>
     <color name="cinza_disable">#D4D4D4</color>
     <color name="cinza_border">#E3E3E3</color>
+    <color name="vermelho_card_error">#FFD6D6</color>
+    <color name="vermelho_text_error">#FF5A5A</color>
+    <color name="verde_card_correct">#E5FFE6</color>
+    <color name="verde_text_correct">#38C53D</color>
 </resources>

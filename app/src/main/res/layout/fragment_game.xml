@@ -67,6 +67,7 @@
     <Button
         android:id="@+id/button_resp"
         style="@style/buttons"
+         android:enabled="false"
         android:layout_marginBottom="19dp"
         android:text="Responder"
         app:layout_constraintBottom_toBottomOf="parent"
