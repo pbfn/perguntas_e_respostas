@@ -1,10 +1,12 @@
 package com.example.perguntas_e_respostas
 
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.perguntas_e_respostas.databinding.FragmentResultBinding
 
@@ -16,7 +18,6 @@ class ResultFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -26,7 +27,6 @@ class ResultFragment : Fragment() {
         _binding = FragmentResultBinding.inflate(inflater,container,false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,11 +40,11 @@ class ResultFragment : Fragment() {
     }
 
     private fun setComponents(){
-        binding.textViewAcertos.text = qtd_acertos.toString()
+        binding.textViewResult.text =String.format(getString(R.string.pontuacao,qtd_acertos.toString()))
+        binding.textViewTentarNovamente.setOnClickListener {
+            val direction = ResultFragmentDirections.actionResultFragmentToHomeFragment()
+            findNavController().navigate(direction)
+        }
     }
-
-
-
-
 
 }

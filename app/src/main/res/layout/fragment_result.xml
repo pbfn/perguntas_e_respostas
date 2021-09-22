@@ -5,16 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
+    android:layout_gravity="center"
+    android:background="@color/azul_claro"
     tools:context=".ResultFragment">
 
 
-    <TextView
-        android:id="@+id/text_view_acertos"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="329dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="163dp"
+        android:layout_marginBottom="245dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginLeft="23dp"
+        android:background="@drawable/card_home"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/text_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title" />
+
+        <TextView
+            style="@style/text_view_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/result_text" />
+
+
+        <TextView
+            android:id="@+id/text_view_result"
+            style="@style/text_view_result"
+            android:text="@string/pontuacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            />
+
+        <TextView
+            android:id="@+id/text_view_tentar_novamente"
+            style="@style/text_view_tentar_novamente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:text="@string/tentar_novamente"
+          />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

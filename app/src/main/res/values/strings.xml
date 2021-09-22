@@ -2,6 +2,7 @@
     <string name="app_name">Perguntas e respostas</string>
     <string name="title">Perguntas e Respostas</string>
     <string name="subtitle">Responda 10 perguntas e veja sua pontuação no fim!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="result_text">Sua pontuação foi de:</string>
+    <string name="tentar_novamente">Tentar novamente</string>
+    <string name="pontuacao">%s/10 Acertos</string>
 </resources>
