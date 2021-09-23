@@ -2,6 +2,7 @@
     <string name="app_name">Perguntas e respostas</string>
     <string name="title">Perguntas e Respostas</string>
     <string name="subtitle">Responda 10 perguntas e veja sua pontuação no fim!</string>
+    <string name="pergunta">Pergunta n° %s: Qual o resultado de %s + %s ?</string>
     <string name="result_text">Sua pontuação foi de:</string>
     <string name="tentar_novamente"><u>Tentar novamente</u></string>
     <string name="pontuacao">%s/10 Acertos</string>

@@ -5,5 +5,4 @@
     <corners android:radius="14dp"/>
     <stroke android:color="@color/azul_tema"
         android:width="1dp"/>
-    <margin android:left="8dp"></margin>
 </shape>

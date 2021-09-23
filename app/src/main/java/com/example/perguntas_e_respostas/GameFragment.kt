@@ -18,7 +18,7 @@ class GameFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentGameBinding? = null
     private val binding get() = _binding!!
     private var qtd_perguntas: Int? = null
-    private var qtd_acertos: Int?= null
+    private var qtd_acertos: Int? = null
     private var correctResp: Int? = null
     private var idCorrectResp: Int = 0
     private var resp: Boolean? = null
@@ -114,9 +114,14 @@ class GameFragment : Fragment(), View.OnClickListener {
         val args: GameFragmentArgs by navArgs()
         qtd_perguntas = args.quantidadePerguntas
         qtd_acertos = args.totalAcertos
-
-        binding.textViewPergunta?.text =
-            "Pergunta nº" + qtd_perguntas.toString() + ": qual a soma de " + questions[0].toString() + "  " + questions[1].toString()
+        binding.textViewPergunta?.text = String.format(
+            getString(
+                R.string.pergunta,
+                qtd_perguntas.toString(),
+                questions[0].toString(),
+                questions[1].toString()
+            )
+        )
     }
 
     //Gerando a pergunta e as alternativas de forma automática
@@ -166,30 +171,45 @@ class GameFragment : Fragment(), View.OnClickListener {
 
     //Verifica se o usuário acertou
     private fun vefifyAlternative() {
-         var radio_button_selected: RadioButton? = null
-         var radio_button_correct: RadioButton? = null
+        var radio_button_selected: RadioButton? = null
+        var radio_button_correct: RadioButton? = null
         radio_button_selected = view?.findViewById(binding.radioGroupRespostas.checkedRadioButtonId)
         radio_button_correct = view?.findViewById(idCorrectResp)
 
 
-        if(binding.radioGroupRespostas.checkedRadioButtonId == idCorrectResp){
+        if (binding.radioGroupRespostas.checkedRadioButtonId == idCorrectResp) {
             resp = true
-            if(qtd_acertos == null){
+            if (qtd_acertos == null) {
                 qtd_acertos = 1
-            }else{
-                qtd_acertos = qtd_acertos!! +1
+            } else {
+                qtd_acertos = qtd_acertos!! + 1
             }
             radio_button_selected?.setBackgroundResource(R.drawable.card_options_correct)
-            radio_button_selected?.setTextColor(ContextCompat.getColor(context!!,R.color.verde_text_correct))
+            radio_button_selected?.setTextColor(
+                ContextCompat.getColor(
+                    context!!,
+                    R.color.verde_text_correct
+                )
+            )
             radio_button_selected?.setButtonDrawable(R.drawable.shape_radio_button_checked_green)
-        }else{
+        } else {
             resp = false
             radio_button_selected?.setBackgroundResource(R.drawable.card_options_error)
-            radio_button_selected?.setTextColor(ContextCompat.getColor(context!!,R.color.vermelho_text_error))
+            radio_button_selected?.setTextColor(
+                ContextCompat.getColor(
+                    context!!,
+                    R.color.vermelho_text_error
+                )
+            )
             radio_button_selected?.setButtonDrawable(R.drawable.shape_radio_button_checked_red)
 
             radio_button_correct?.setBackgroundResource(R.drawable.card_options_correct)
-            radio_button_correct?.setTextColor(ContextCompat.getColor(context!!,R.color.verde_text_correct))
+            radio_button_correct?.setTextColor(
+                ContextCompat.getColor(
+                    context!!,
+                    R.color.verde_text_correct
+                )
+            )
             radio_button_correct?.setButtonDrawable(R.drawable.shape_radio_button_checked_green)
         }
     }
