@@ -40,6 +40,7 @@
 
 
     <style name="card_options">
+        <item name="android:button">@drawable/radio_button_selector</item>
         <item name="android:background">@drawable/card_selector</item>
         <item name="android:padding">8dp</item>
         <item name="textAllCaps">false</item>

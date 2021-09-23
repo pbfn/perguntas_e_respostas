@@ -50,7 +50,6 @@ class GameFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            //marcar a alteranativa em azul
             R.id.radio_button_resp_1 -> {
                 binding.buttonResp.isEnabled = true
             }
@@ -181,12 +180,16 @@ class GameFragment : Fragment(), View.OnClickListener {
             }
             radio_button_selected?.setBackgroundResource(R.drawable.card_options_correct)
             radio_button_selected?.setTextColor(ContextCompat.getColor(context!!,R.color.verde_text_correct))
+            radio_button_selected?.setButtonDrawable(R.drawable.shape_radio_button_checked_green)
         }else{
             resp = false
             radio_button_selected?.setBackgroundResource(R.drawable.card_options_error)
             radio_button_selected?.setTextColor(ContextCompat.getColor(context!!,R.color.vermelho_text_error))
+            radio_button_selected?.setButtonDrawable(R.drawable.shape_radio_button_checked_red)
+
             radio_button_correct?.setBackgroundResource(R.drawable.card_options_correct)
             radio_button_correct?.setTextColor(ContextCompat.getColor(context!!,R.color.verde_text_correct))
+            radio_button_correct?.setButtonDrawable(R.drawable.shape_radio_button_checked_green)
         }
     }
 
