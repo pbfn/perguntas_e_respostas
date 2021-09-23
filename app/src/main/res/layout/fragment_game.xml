@@ -41,28 +41,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/text_view_respostas">
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/radio_button_resp_1"
             style="@style/card_options"
             android:text="Alternativa 1" />
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/radio_button_resp_2"
             style="@style/card_options"
             android:text="Alternativa 2" />
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/radio_button_resp_3"
             style="@style/card_options"
             android:text="Alternativa 3" />
 
-        <RadioButton
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/radio_button_resp_4"
             style="@style/card_options"
             android:text="Alternativa 4" />
+
     </RadioGroup>
+
 
     <Button
         android:id="@+id/button_resp"
