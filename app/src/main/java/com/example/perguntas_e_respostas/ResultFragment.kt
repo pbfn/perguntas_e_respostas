@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.perguntas_e_respostas.databinding.FragmentResultBinding
@@ -15,6 +16,8 @@ class ResultFragment : Fragment() {
     private var _binding: FragmentResultBinding? = null
     private val binding get() = _binding!!
     private var qtd_acertos: Int? = null
+    var imageButton: ImageView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +27,7 @@ class ResultFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentResultBinding.inflate(inflater,container,false)
+        _binding = FragmentResultBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,15 +37,21 @@ class ResultFragment : Fragment() {
         setComponents()
     }
 
-    private fun getArgs(){
+    private fun getArgs() {
         val args: ResultFragmentArgs by navArgs()
         qtd_acertos = args.totalAcertos
     }
 
-    private fun setComponents(){
-        binding.textViewResult.text =String.format(getString(R.string.pontuacao,qtd_acertos.toString()))
+    private fun setComponents() {
+        binding.textViewResult.text =
+            String.format(getString(R.string.pontuacao, qtd_acertos.toString()))
+        val direction = ResultFragmentDirections.actionResultFragmentToHomeFragment()
         binding.textViewTentarNovamente.setOnClickListener {
-            val direction = ResultFragmentDirections.actionResultFragmentToHomeFragment()
+            findNavController().navigate(direction)
+        }
+        imageButton = activity?.findViewById(R.id.image_button_voltar)
+        imageButton?.visibility = View.VISIBLE
+        imageButton?.setOnClickListener{
             findNavController().navigate(direction)
         }
     }

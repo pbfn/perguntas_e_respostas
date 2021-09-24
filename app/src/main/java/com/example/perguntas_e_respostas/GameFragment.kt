@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.RadioButton
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
@@ -23,6 +25,9 @@ class GameFragment : Fragment(), View.OnClickListener {
     private var idCorrectResp: Int = 0
     private var resp: Boolean? = null
     private var questions = IntArray(6)
+    var imageButton: ImageView? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +43,10 @@ class GameFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        imageButton =  activity?.findViewById(R.id.image_button_voltar)
+        imageButton?.visibility = View.VISIBLE
+
         generateQuestions()
         setAlteratives()
         setClicksEvents()
@@ -75,16 +84,23 @@ class GameFragment : Fragment(), View.OnClickListener {
                 }
             }
 
+            R.id.image_button_voltar ->{
+                val direction =
+                    GameFragmentDirections.actionGameFragmentToHomeFragment()
+                findNavController().navigate(direction)
+            }
+
         }
     }
 
     //Eventos de Click
     private fun setClicksEvents() {
-        binding.buttonResp?.setOnClickListener(this)
-        binding.radioButtonResp1?.setOnClickListener(this)
-        binding.radioButtonResp2?.setOnClickListener(this)
-        binding.radioButtonResp3?.setOnClickListener(this)
-        binding.radioButtonResp4?.setOnClickListener(this)
+        binding.buttonResp.setOnClickListener(this)
+        binding.radioButtonResp1.setOnClickListener(this)
+        binding.radioButtonResp2.setOnClickListener(this)
+        binding.radioButtonResp3.setOnClickListener(this)
+        binding.radioButtonResp4.setOnClickListener(this)
+        imageButton?.setOnClickListener(this)
     }
 
     //Desativando os radio buttons para evitar de alterar a resposta após responder
